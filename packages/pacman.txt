@@ -27,7 +27,6 @@ gnome-keyring
 hyprland
 hyprlock
 hyprpicker
-hyprland-preview-share-picker
 hyprsunset
 keepassxc
 kleopatra
@@ -35,7 +34,6 @@ lazydocker
 lazygit
 less
 libreoffice-fresh
-localsend
 mako
 man-db
 mingw-w64-gcc
@@ -59,12 +57,10 @@ ripgrep
 rust
 sddm
 slurp
-spotify
 swaybg
 thunderbird
 tmux
 tree
-ttf-ia-writer
 ttf-jetbrains-mono-nerd
 ufw
 ufw-docker

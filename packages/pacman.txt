@@ -8,7 +8,6 @@ dosfstools
 docker
 docker-compose
 docker-buildx
-claude-code
 duckdb
 dust
 eza
@@ -63,7 +62,6 @@ tmux
 tree
 ttf-jetbrains-mono-nerd
 ufw
-ufw-docker
 unzip
 waybar
 wl-clipboard

@@ -73,3 +73,4 @@ waybar
 wl-clipboard
 woff2-font-awesome
 zoxide
+base-devel

@@ -29,12 +29,12 @@ echo ""
 step "Git identity"
 
 if [ -z "$(git config --global user.name 2>/dev/null)" ]; then
-  read -rp "Your full name: " GIT_NAME
+  read -rp "Your full name: " GIT_NAME </dev/tty
   git config --global user.name "$GIT_NAME"
 fi
 
 if [ -z "$(git config --global user.email 2>/dev/null)" ]; then
-  read -rp "Your email address: " GIT_EMAIL
+  read -rp "Your email address: " GIT_EMAIL </dev/tty
   git config --global user.email "$GIT_EMAIL"
 fi
 
@@ -135,7 +135,7 @@ echo -e "  • Log out and back in (or reboot) for group/shell changes to take e
 echo -e "  • Start Hyprland: ${CYAN}Hyprland${RESET}"
 echo -e "  • Open Obsidian and point it to ${CYAN}~/Finance${RESET}"
 echo ""
-read -rp "Reboot now? [y/N] " REBOOT
+read -rp "Reboot now? [y/N] " REBOOT </dev/tty
 if [[ "$REBOOT" =~ ^[Yy]$ ]]; then
   sudo reboot
 fi

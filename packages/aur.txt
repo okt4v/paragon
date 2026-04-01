@@ -1,3 +1,6 @@
 rpi-imager-latest
+signal-desktop
+swww
+tickrs
 tor-browser-bin
-tor-browser-bin
+veracrypt

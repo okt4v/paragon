@@ -1,0 +1,51 @@
+# ── Ghostty terminal config ───────────────────────────────────────────────────
+
+# Font
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+
+# Window
+window-padding-x = 12
+window-padding-y = 10
+window-decoration = false
+
+# Shell
+shell-integration = zsh
+
+# Colors — dark slate palette with teal accents
+background = #0f172a
+foreground = #e2e8f0
+
+# Normal colors
+palette = 0=#1e293b
+palette = 1=#f43f5e
+palette = 2=#4ade80
+palette = 3=#facc15
+palette = 4=#38bdf8
+palette = 5=#a78bfa
+palette = 6=#5eead4
+palette = 7=#cbd5e1
+
+# Bright colors
+palette = 8=#334155
+palette = 9=#fb7185
+palette = 10=#86efac
+palette = 11=#fde68a
+palette = 12=#7dd3fc
+palette = 13=#c4b5fd
+palette = 14=#99f6e4
+palette = 15=#f1f5f9
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = true
+
+# Scrollback
+scrollback-limit = 10000
+
+# Mouse
+focus-follows-mouse = false
+
+# Misc
+copy-on-select = clipboard
+confirm-close-surface = false

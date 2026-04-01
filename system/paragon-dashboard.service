@@ -1,0 +1,13 @@
+[Unit]
+Description=Paragon dashboard wallpaper generator
+After=network-online.target graphical-session.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.local/share/paragon/scripts/dashboard.py
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

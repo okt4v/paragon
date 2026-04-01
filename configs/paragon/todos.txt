@@ -1,0 +1,5 @@
+[ ] Review portfolio positions
+[ ] Check earnings calendar this week
+[ ] Read market open notes
+[ ] Push latest project commits
+[x] Install Paragon

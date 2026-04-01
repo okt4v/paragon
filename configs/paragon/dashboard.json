@@ -1,0 +1,10 @@
+{
+  "weather_location": "",
+  "market_symbols": ["BTC-USD", "ETH-USD", "SPY", "QQQ", "NVDA"],
+  "news_feeds": [
+    "https://feeds.bbci.co.uk/news/rss.xml",
+    "https://feeds.reuters.com/reuters/topNews"
+  ],
+  "news_count": 8,
+  "resolution": "auto"
+}

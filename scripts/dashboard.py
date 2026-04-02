@@ -408,6 +408,38 @@ def draw_dashboard(W, H, data, fonts):
 
     return img
 
+# ── Wallpaper setter ─────────────────────────────────────────────────────────
+
+def _set_wallpaper(path: Path):
+    # Not in a Wayland session — just print the path
+    if not os.environ.get("WAYLAND_DISPLAY"):
+        print(f"  → dashboard saved to {path} (no Wayland session — wallpaper not set)")
+        return
+
+    # swww not installed
+    if subprocess.run(["which", "swww"], capture_output=True).returncode != 0:
+        print(f"  ! swww not found — install it with: yay -S swww")
+        print(f"  → dashboard saved to {path}")
+        return
+
+    # Start swww-daemon if it isn't running
+    if subprocess.run(["pgrep", "-x", "swww-daemon"], capture_output=True).returncode != 0:
+        print("  → starting swww-daemon...")
+        subprocess.Popen(["swww-daemon"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        import time; time.sleep(1)
+
+    try:
+        subprocess.run(
+            ["swww", "img", str(path),
+             "--transition-type", "fade",
+             "--transition-duration", "1"],
+            check=True, timeout=10,
+        )
+        print("  → wallpaper set via swww ✓")
+    except Exception as e:
+        print(f"  ! swww failed: {e} — image saved to {path}", file=sys.stderr)
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
@@ -445,16 +477,7 @@ def main():
     img.save(str(WALLPAPER_OUT), "PNG", optimize=True)
     print(f"  → saved {WALLPAPER_OUT}")
 
-    try:
-        subprocess.run(
-            ["swww", "img", str(WALLPAPER_OUT),
-             "--transition-type", "fade",
-             "--transition-duration", "1"],
-            check=True, timeout=10,
-        )
-        print("  → wallpaper set via swww ✓")
-    except Exception as e:
-        print(f"  ! swww failed: {e}", file=sys.stderr)
+    _set_wallpaper(WALLPAPER_OUT)
 
 if __name__ == "__main__":
     main()

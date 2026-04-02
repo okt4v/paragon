@@ -1,0 +1,139 @@
+; ── Polls (live data) ────────────────────────────────────────────────────────
+
+(defpoll clock     :interval "1s"    `date '+%H:%M:%S'`)
+(defpoll date-str  :interval "60s"   `date '+%a  %d %b  %Y'`)
+
+(defpoll cpu-usage :interval "3s"
+  `top -bn1 | grep "Cpu(s)" | awk '{printf "%d", $2}'`)
+(defpoll ram-usage :interval "5s"
+  `free | awk '/^Mem:/{printf "%d", $3/$2*100}'`)
+(defpoll disk-usage :interval "30s"
+  `df -h / | awk 'NR==2{print $5}' | tr -d '%'`)
+
+(defpoll price-btc  :interval "60s"  `~/.config/eww/scripts/price.py BTC-USD`)
+(defpoll price-eth  :interval "60s"  `~/.config/eww/scripts/price.py ETH-USD`)
+(defpoll price-spy  :interval "60s"  `~/.config/eww/scripts/price.py SPY`)
+(defpoll price-qqq  :interval "60s"  `~/.config/eww/scripts/price.py QQQ`)
+(defpoll price-nvda :interval "60s"  `~/.config/eww/scripts/price.py NVDA`)
+
+(defpoll weather-out :interval "600s" `~/.config/eww/scripts/weather.py`)
+(defpoll news-out    :interval "900s" `~/.config/eww/scripts/news.py`)
+(defpoll todos-out   :interval "10s"  `~/.config/eww/scripts/todos.py`)
+
+; ── Reusable widgets ──────────────────────────────────────────────────────────
+
+(defwidget section-title [title]
+  (label :class "section-title" :halign "start" :text title))
+
+(defwidget divider []
+  (box :class "divider"))
+
+(defwidget market-row [sym price]
+  (box :class "market-row" :orientation "h" :space-evenly false
+    (label :class "market-sym"   :text sym   :halign "start" :xalign 0)
+    (box :hexpand true)
+    (label :class "market-price" :text price :halign "end"
+           :markup true :xalign 1)))
+
+(defwidget bar-row [label pct]
+  (box :class "bar-row" :orientation "v" :space-evenly false
+    (box :orientation "h" :space-evenly false
+      (label :class "stat-label" :text label :halign "start")
+      (box :hexpand true)
+      (label :class "stat-value" :text "${pct}%" :halign "end"))
+    (box :class "bar-bg"
+      (box :class "bar-fill"
+           :hexpand false
+           :style "min-width: ${pct}%;"))))
+
+; ── Header ────────────────────────────────────────────────────────────────────
+
+(defwidget w-header []
+  (box :class "header" :orientation "h" :space-evenly false :halign "fill"
+    (label :class "logo" :text "PARAGON" :halign "start" :valign "center")
+    (box :hexpand true)
+    (box :class "header-right" :orientation "v" :halign "end" :valign "center"
+         :space-evenly false
+      (label :class "clock" :text clock   :halign "end")
+      (label :class "date"  :text date-str :halign "end"))))
+
+; ── Markets column ────────────────────────────────────────────────────────────
+
+(defwidget w-markets []
+  (box :class "panel markets-panel" :orientation "v" :space-evenly false
+       :vexpand true
+    (section-title :title "◈  MARKETS")
+    (divider)
+    (market-row :sym "BTC"  :price price-btc)
+    (market-row :sym "ETH"  :price price-eth)
+    (market-row :sym "SPY"  :price price-spy)
+    (market-row :sym "QQQ"  :price price-qqq)
+    (market-row :sym "NVDA" :price price-nvda)
+    (box :vexpand true)))
+
+; ── System column ─────────────────────────────────────────────────────────────
+
+(defwidget w-system []
+  (box :class "panel" :orientation "v" :space-evenly false
+    (section-title :title "◈  SYSTEM")
+    (divider)
+    (bar-row :label "CPU"  :pct cpu-usage)
+    (bar-row :label "RAM"  :pct ram-usage)
+    (bar-row :label "DISK" :pct disk-usage)))
+
+(defwidget w-todos []
+  (box :class "panel" :orientation "v" :space-evenly false :vexpand true
+    (section-title :title "◈  TODOS")
+    (divider)
+    (label :class "todo-text" :markup true :halign "start" :valign "start"
+           :wrap true :text todos-out)))
+
+(defwidget w-middle []
+  (box :orientation "v" :space-evenly false :vexpand true
+    (w-system)
+    (w-todos)))
+
+; ── Right column ──────────────────────────────────────────────────────────────
+
+(defwidget w-weather []
+  (box :class "panel" :orientation "v" :space-evenly false
+    (section-title :title "◈  WEATHER")
+    (divider)
+    (label :class "weather-out" :markup true :halign "start" :wrap true
+           :text weather-out)))
+
+(defwidget w-news []
+  (box :class "panel" :orientation "v" :space-evenly false :vexpand true
+    (section-title :title "◈  NEWS")
+    (divider)
+    (label :class "news-out" :markup true :halign "start" :valign "start"
+           :wrap true :text news-out)))
+
+(defwidget w-right []
+  (box :orientation "v" :space-evenly false :vexpand true
+    (w-weather)
+    (w-news)))
+
+; ── Root layout ───────────────────────────────────────────────────────────────
+
+(defwidget desktop-root []
+  (box :class "root" :orientation "v" :space-evenly false
+    (w-header)
+    (box :class "content" :orientation "h" :space-evenly false
+         :vexpand true :hexpand true
+      (w-markets)
+      (w-middle)
+      (w-right))))
+
+; ── Window ────────────────────────────────────────────────────────────────────
+
+(defwindow desktop
+  :monitor 0
+  :geometry (geometry
+    :x "0px" :y "0px"
+    :width "100%" :height "100%"
+    :anchor "top left")
+  :stacking "bottom"
+  :exclusive false
+  :focusable false
+  (desktop-root))

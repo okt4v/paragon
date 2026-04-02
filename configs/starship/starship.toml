@@ -1,5 +1,4 @@
-# ── Paragon Starship prompt ───────────────────────────────────────────────────
-# Minimal, fast, informative
+# ── Paragon Starship — Bloomberg black/orange ─────────────────────────────────
 
 format = """
 $directory\
@@ -13,69 +12,59 @@ $cmd_duration\
 $line_break\
 $character"""
 
-# ── Directory ─────────────────────────────────────────────────────────────────
 [directory]
-style = "bold cyan"
+style = "bold #ff6600"
 truncation_length = 3
 truncate_to_repo = true
 read_only = " 󰌾"
 
-# ── Git ───────────────────────────────────────────────────────────────────────
 [git_branch]
 format = " [$symbol$branch]($style) "
-style = "bold #94a3b8"
+style = "bold #555555"
 symbol = " "
 
 [git_status]
 format = "[$all_status$ahead_behind]($style) "
-style = "bold #5eead4"
+style = "bold #ffaa00"
 conflicted = "󰩠 "
-ahead = "⇡${count} "
-behind = "⇣${count} "
-diverged = "⇕⇡${ahead_count}⇣${behind_count} "
-untracked = " "
-stashed = " "
-modified = " "
-staged = " "
-renamed = " "
-deleted = " "
+ahead      = "⇡${count} "
+behind     = "⇣${count} "
+diverged   = "⇕⇡${ahead_count}⇣${behind_count} "
+untracked  = " "
+stashed    = " "
+modified   = " "
+staged     = " "
+renamed    = " "
+deleted    = " "
 
-# ── Languages ─────────────────────────────────────────────────────────────────
 [python]
 format = "[ $version]($style) "
-style = "#facc15"
+style = "#ffaa00"
 detect_files = ["requirements.txt", "pyproject.toml", "setup.py", ".python-version", "Pipfile"]
 
 [rust]
 format = "[ $version]($style) "
-style = "#f97316"
+style = "#ff6600"
 
 [nodejs]
 format = "[ $version]($style) "
-style = "#4ade80"
+style = "#00dd55"
 detect_files = ["package.json", ".nvmrc"]
 
-# ── Docker ────────────────────────────────────────────────────────────────────
 [docker_context]
 format = "[ $context]($style) "
-style = "#38bdf8"
+style = "#3399ff"
 only_with_files = true
 
-# ── Command duration ──────────────────────────────────────────────────────────
 [cmd_duration]
 format = "[ $duration]($style) "
-style = "#64748b"
+style = "#333333"
 min_time = 2_000
 
-# ── Prompt character ──────────────────────────────────────────────────────────
 [character]
-success_symbol = "[❯](bold #5eead4)"
-error_symbol = "[❯](bold #f43f5e)"
-vimcmd_symbol = "[❮](bold #a78bfa)"
+success_symbol = "[❯](bold #ff6600)"
+error_symbol   = "[❯](bold #ff2233)"
+vimcmd_symbol  = "[❮](bold #ffaa00)"
 
-# ── Disabled modules ──────────────────────────────────────────────────────────
 [package]
 disabled = true
-
-[line_break]
-disabled = false

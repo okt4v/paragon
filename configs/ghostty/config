@@ -1,51 +1,41 @@
-# ── Ghostty terminal config ───────────────────────────────────────────────────
+# ── Ghostty — Bloomberg black/orange ─────────────────────────────────────────
 
-# Font
 font-family = JetBrainsMono Nerd Font
 font-size = 13
 
-# Window
 window-padding-x = 12
 window-padding-y = 10
 window-decoration = false
 
-# Shell
 shell-integration = zsh
 
-# Colors — dark slate palette with teal accents
-background = #0f172a
-foreground = #e2e8f0
+background = #000000
+foreground = #f0f0f0
 
-# Normal colors
-palette = 0=#1e293b
-palette = 1=#f43f5e
-palette = 2=#4ade80
-palette = 3=#facc15
-palette = 4=#38bdf8
-palette = 5=#a78bfa
-palette = 6=#5eead4
-palette = 7=#cbd5e1
+# Normal
+palette = 0=#0a0a0a
+palette = 1=#ff2233
+palette = 2=#00dd55
+palette = 3=#ffaa00
+palette = 4=#3399ff
+palette = 5=#cc44ff
+palette = 6=#ff6600
+palette = 7=#cccccc
 
-# Bright colors
-palette = 8=#334155
-palette = 9=#fb7185
-palette = 10=#86efac
-palette = 11=#fde68a
-palette = 12=#7dd3fc
-palette = 13=#c4b5fd
-palette = 14=#99f6e4
-palette = 15=#f1f5f9
+# Bright
+palette = 8=#222222
+palette = 9=#ff4455
+palette = 10=#33ff77
+palette = 11=#ffcc33
+palette = 12=#55aaff
+palette = 13=#dd77ff
+palette = 14=#ff8833
+palette = 15=#f0f0f0
 
-# Cursor
 cursor-style = bar
 cursor-style-blink = true
+cursor-color = #ff6600
 
-# Scrollback
 scrollback-limit = 10000
-
-# Mouse
-focus-follows-mouse = false
-
-# Misc
 copy-on-select = clipboard
 confirm-close-surface = false

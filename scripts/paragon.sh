@@ -86,6 +86,11 @@ cmd_reload() {
     disown
     ok "Mako restarted"
   fi
+
+  # Reload eww
+  if command -v eww &>/dev/null; then
+    eww reload 2>/dev/null && ok "eww reloaded" || true
+  fi
 }
 
 # ── dashboard ─────────────────────────────────────────────────────────────────

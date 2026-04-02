@@ -66,6 +66,7 @@ sddm
 slurp
 starship
 swaybg
+swww
 thunderbird
 tmux
 tor

@@ -51,6 +51,10 @@ backup_and_link "$CONFIG_SRC/ghostty" "$CONFIG_DST/ghostty"
 # ── Starship ──────────────────────────────────────────────────────────────────
 backup_and_link "$CONFIG_SRC/starship/starship.toml" "$CONFIG_DST/starship.toml"
 
+# ── eww ───────────────────────────────────────────────────────────────────────
+backup_and_link "$CONFIG_SRC/eww" "$CONFIG_DST/eww"
+chmod +x "$CONFIG_SRC/eww/scripts/"*.py 2>/dev/null || true
+
 # ── Zsh ───────────────────────────────────────────────────────────────────────
 mkdir -p "$CONFIG_DST/zsh"
 backup_and_link "$CONFIG_SRC/zsh/.zshrc" "$HOME/.zshrc"

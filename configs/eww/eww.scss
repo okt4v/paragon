@@ -1,0 +1,154 @@
+// ── Bloomberg palette ─────────────────────────────────────────────────────────
+$black:      #000000;
+$bg-panel:   #0a0a0a;
+$bg-bar:     #141414;
+$border:     #1c1c1c;
+$border-hot: #2a2a2a;
+$orange:     #ff6600;
+$orange-dim: #7a3000;
+$amber:      #ffaa00;
+$white:      #f0f0f0;
+$gray:       #555555;
+$gray-dim:   #2a2a2a;
+$green:      #00dd55;
+$red:        #ff2233;
+
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+  color: $white;
+}
+
+// ── Root / background ─────────────────────────────────────────────────────────
+.root {
+  background-color: $black;
+  padding: 14px 16px;
+}
+
+.content {
+  margin-top: 12px;
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+.header {
+  border-bottom: 1px solid $orange-dim;
+  padding-bottom: 10px;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: bold;
+  color: $orange;
+  letter-spacing: 6px;
+}
+
+.clock {
+  font-size: 46px;
+  font-weight: bold;
+  color: $white;
+  letter-spacing: 3px;
+}
+
+.date {
+  font-size: 12px;
+  color: $gray;
+  letter-spacing: 3px;
+  margin-top: 2px;
+}
+
+// ── Panels ────────────────────────────────────────────────────────────────────
+.panel {
+  background-color: $bg-panel;
+  border: 1px solid $border;
+  border-radius: 1px;
+  padding: 12px 14px;
+  margin: 5px;
+}
+
+.markets-panel {
+  min-width: 260px;
+}
+
+.section-title {
+  font-size: 10px;
+  font-weight: bold;
+  color: $orange;
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+}
+
+.divider {
+  background-color: $border;
+  min-height: 1px;
+  margin-bottom: 10px;
+}
+
+// ── Markets ───────────────────────────────────────────────────────────────────
+.market-row {
+  padding: 7px 0;
+  border-bottom: 1px solid $border;
+}
+
+.market-sym {
+  font-size: 14px;
+  font-weight: bold;
+  color: $white;
+  min-width: 55px;
+}
+
+.market-price {
+  font-size: 13px;
+  color: $amber;
+}
+
+// ── System bars ───────────────────────────────────────────────────────────────
+.bar-row {
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: $gray;
+  min-width: 40px;
+}
+
+.stat-value {
+  font-size: 12px;
+  color: $white;
+  font-weight: bold;
+}
+
+.bar-bg {
+  background-color: $bg-bar;
+  border: 1px solid $border;
+  border-radius: 1px;
+  min-height: 4px;
+  margin-top: 3px;
+}
+
+.bar-fill {
+  background-color: $orange;
+  min-height: 4px;
+  border-radius: 1px;
+}
+
+// ── Weather ───────────────────────────────────────────────────────────────────
+.weather-out {
+  font-size: 13px;
+  color: $white;
+  line-height: 1.6em;
+}
+
+// ── News ──────────────────────────────────────────────────────────────────────
+.news-out {
+  font-size: 12px;
+  color: $white;
+  line-height: 1.7em;
+}
+
+// ── Todos ─────────────────────────────────────────────────────────────────────
+.todo-text {
+  font-size: 13px;
+  line-height: 1.8em;
+}

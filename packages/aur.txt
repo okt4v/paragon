@@ -1,6 +1,6 @@
+eww
 rpi-imager-latest
 signal-desktop
-swww
 tickrs
 tor-browser-bin
 veracrypt

@@ -82,7 +82,7 @@ step "Installing Claude Code"
 if command -v claude &>/dev/null; then
   ok "Claude Code already installed"
 else
-  curl -fsSL https://claude.ai/install.sh | bash
+  curl -fsSL https://claude.ai/install.sh | bash -s -- </dev/tty
   ok "Claude Code installed"
 fi
 

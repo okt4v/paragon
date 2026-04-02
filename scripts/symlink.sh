@@ -65,9 +65,15 @@ for f in dashboard.json todos.txt; do
   [ -f "$src" ] && [ ! -e "$dst" ] && cp "$src" "$dst" && echo -e "${GREEN}  ✓ $dst (initial copy)${RESET}"
 done
 
+# ── paragon CLI ───────────────────────────────────────────────────────────────
+mkdir -p "$HOME/.local/bin"
+ln -sf "$PARAGON_DIR/scripts/paragon.sh" "$HOME/.local/bin/paragon"
+chmod +x "$PARAGON_DIR/scripts/paragon.sh"
+echo -e "${GREEN}  ✓ $HOME/.local/bin/paragon${RESET}"
+
 # Make scripts executable
 chmod +x "$CONFIG_SRC/waybar/scripts/ticker.py" 2>/dev/null || true
-chmod +x "$(dirname "$0")/dashboard.py" 2>/dev/null || true
+chmod +x "$PARAGON_DIR/scripts/dashboard.py" 2>/dev/null || true
 
 echo ""
 echo -e "${GREEN}All configs linked.${RESET}"

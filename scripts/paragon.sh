@@ -87,21 +87,40 @@ cmd_reload() {
     ok "Mako restarted"
   fi
 
-  # Reload eww
-  if command -v eww &>/dev/null; then
-    eww reload 2>/dev/null && ok "eww reloaded" || true
+  # Start/reload eww desktop
+  _eww_start
+}
+
+# ── eww helpers ───────────────────────────────────────────────────────────────
+
+_eww_start() {
+  if ! command -v eww &>/dev/null; then
+    warn "eww not installed — run: yay -S eww"
+    return
+  fi
+
+  # Start daemon if not running
+  if ! eww ping &>/dev/null 2>&1; then
+    info "Starting eww daemon..."
+    eww daemon &>/dev/null
+    sleep 1
+  fi
+
+  # Open or reload the desktop window
+  if eww windows 2>/dev/null | grep -q "desktop"; then
+    eww reload &>/dev/null
+    eww open desktop &>/dev/null
+    ok "eww dashboard opened"
+  else
+    eww open desktop &>/dev/null
+    ok "eww dashboard opened"
   fi
 }
 
 # ── dashboard ─────────────────────────────────────────────────────────────────
 
 cmd_dashboard() {
-  if [ ! -f "$PARAGON_DIR/scripts/dashboard.py" ]; then
-    err "Dashboard script not found at $PARAGON_DIR/scripts/dashboard.py"
-    exit 1
-  fi
-  info "Generating dashboard wallpaper..."
-  python3 "$PARAGON_DIR/scripts/dashboard.py"
+  _eww_start
 }
 
 # ── edit ──────────────────────────────────────────────────────────────────────

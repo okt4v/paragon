@@ -295,7 +295,7 @@ cmd_doctor() {
   _check "LazyVim present"             "[ -f '$CONFIG_DIR/nvim/.lazyvim' ]"
   _check "zsh installed"               "command -v zsh"
   _check "starship installed"          "command -v starship"
-  _check "swww installed"              "command -v swww"
+  _check "eww installed"               "command -v eww"
   _check "Claude Code installed"       "command -v claude || [ -x '$HOME/.local/bin/claude' ]"
   _check "Docker running"              "systemctl is-active --quiet docker"
   _check "Mullvad daemon running"      "systemctl is-active --quiet mullvad-daemon"

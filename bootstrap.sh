@@ -79,7 +79,7 @@ ok "LazyVim ready"
 
 # ── Claude Code ───────────────────────────────────────────────────────────────
 step "Installing Claude Code"
-if command -v claude &>/dev/null; then
+if command -v claude &>/dev/null || [ -x "$HOME/.local/bin/claude" ]; then
   ok "Claude Code already installed"
 else
   curl -fsSL https://claude.ai/install.sh -o /tmp/claude-install.sh

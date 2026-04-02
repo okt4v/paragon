@@ -53,6 +53,7 @@ onionshare
 openbsd-netcat
 pamixer
 playerctl
+polkit-gnome
 python
 python-pillow
 python-pip

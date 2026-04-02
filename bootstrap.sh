@@ -112,7 +112,7 @@ sudo usermod -aG docker "$USER"
 # ── Default shell → zsh ───────────────────────────────────────────────────────
 step "Setting default shell to zsh"
 if [ "$SHELL" != "$(which zsh)" ]; then
-  chsh -s "$(which zsh)"
+  sudo usermod -s "$(which zsh)" "$USER"
   ok "Default shell set to zsh (takes effect on next login)"
 else
   ok "zsh is already the default shell"
